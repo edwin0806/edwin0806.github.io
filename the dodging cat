@@ -1,0 +1,424 @@
+<!Doctype html>
+<html lang = "eng">
+<head>
+<meta charset = "utf-8">
+<title>                   </title>
+
+<script type = "text/javascript">
+
+</script>
+
+</head>
+
+<body onload = "gameRule();">  <button onclick = "gameRule();">See Rules Again</button>
+<canvas id = "canvas" width = "600" height = "600"></canvas>
+<form>
+</form>
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var width = canvas.width;
+var height = canvas.height;
+var x = 300;
+var y = 300;
+var dx = 3;
+var dy = 3;
+var x1 = 599;
+var y1 = 150;
+var x2 = 599 ;
+var y2 = 300;
+var x3 = 599;
+var y3 = 450;
+var x4 = 1;
+var y4 = 150;
+var x5 = 1;
+var y5 = 300;
+var x6 = 1;
+var y6 = 450;
+var x7 = 150;
+var y7 = 599;
+var x8 = 300;
+var y8 = 599;
+var x9 = 450;
+var y9 = 599;
+var x10 = 150;
+var y10 = 1;
+var x11 = 300;
+var y11 = 1;
+var x12 = 450;
+var y12 = 1;
+var strokeCanvas = function(){
+ctx.beginPath();
+ctx.rect(0,0,width,height);
+ctx.stroke();
+} 
+
+var drawCircle = function(x,y,radius){
+ctx.beginPath();
+ctx.arc(x,y,radius,0,Math.PI*2,false);
+ctx.fill();
+ctx.stroke();
+}
+
+var drawCatFace = function(x,y){
+ctx.lineWidth = 2;
+ctx.strokeStyle = "Black";
+ctx.fillStyle = "Gold";
+drawCircle(x,y,16);
+drawCircle(x-10,y-22,10);
+drawCircle(x+10,y-22,10);
+}
+var drawCatEyes = function(x,y){
+ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillstyle = "white";
+drawCircle(x+4,y-7,4);
+drawCircle(x-4,y-7,4);
+}
+var drawCatEyeballs = function(x,y){
+ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillstyle = "black";
+drawCircle(x+3,y-6,1);
+drawCircle(x-3,y-6,1);
+
+
+}
+var drawCatNose = function(x,y){
+ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillstyle = "black";
+drawCircle(x,y,2);
+}
+
+var drawCat = function(x,y){
+drawCatNose(x,y);
+drawCatEyes(x,y);
+drawCatFace(x,y);
+drawCatEyeballs(x,y);
+}
+function gameLose(){
+alert('GAME OVER');
+}
+function gameRule(){
+alert('Move the cute cat by the four direction keys. So that it does not get bombed by those dark dots, hold on for more than one minute and you will win!')
+}
+function gameWin(){
+alert('It is not too hard, congratulations!')
+clearInterval(ultimate);
+}
+var moveRight = function(){
+x += dx
+drawCat(x,y);
+}
+var moveLeft = function(){
+x -= dx
+drawCat(x,y);
+}
+var moveUp = function(){
+y += dy
+drawCat(x,y);
+}
+var moveDown = function(){
+y -= dy
+drawCat(x,y);
+}
+var directions = { 
+37: "left",
+38: "up", 
+39: "right", 
+40: "down"
+};
+$("body").keydown(function(event){
+    switch(event.keyCode){
+        case 37:    //左方向键
+            moveLeft();
+            break;
+        case 40:    //上方向键
+            moveUp();
+            break;
+        case 39:    //右方向键
+            moveRight();
+            break;
+        case 38:    //下方向键
+            moveDown();
+            break;
+        default:    //其他按键操作不响应
+            return;
+    }
+	})
+function Bullet1(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x1,y1,2);
+};
+function Bullet2(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x2,y2,2);
+};
+function Bullet3(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x3,y3,2);
+};
+function Bullet4(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x4,y4,2);
+};
+function Bullet5(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x5,y5,2);
+};
+function Bullet6(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x6,y6,2);
+};
+function Bullet7(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x7,y7,2);
+};
+function Bullet8(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x8,y8,2);
+};
+function Bullet9(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x9,y9,2);
+};
+function Bullet10(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x10,y10,2);
+};
+function Bullet11(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x11,y11,2);
+};
+function Bullet12(){ctx.lineWidth = 1;
+ctx.strokeStyle = "black";
+ctx.fillStyle = "black";
+drawCircle(x12,y12,2);
+};
+
+var vx1 = createRandomNumber1();
+var vy1 = createRandomNumber2();
+var vx2 = createRandomNumber1();
+var vy2 = createRandomNumber2();
+var vx3 = createRandomNumber1();
+var vy3 = createRandomNumber2();
+var vx4 = createRandomNumber1();
+var vy4 = createRandomNumber2();
+var vx5 = createRandomNumber1();
+var vy5 = createRandomNumber2();
+var vx6 = createRandomNumber1();
+var vy6 = createRandomNumber2();
+var vx7 = createRandomNumber1();
+var vy7 = createRandomNumber2();
+var vx8 = createRandomNumber1();
+var vy8 = createRandomNumber2();
+var vx9 = createRandomNumber1();
+var vy9 = createRandomNumber2();
+var vx10 = createRandomNumber1();
+var vy10 = createRandomNumber2();
+var vx11 = createRandomNumber1();
+var vy11 = createRandomNumber2();
+var vx12 = createRandomNumber1();
+var vy12 = createRandomNumber2();
+var randomNumber = Math.random()*360;
+function createRandomNumber1(){
+var vx = 3*Math.random()-2;
+return vx;
+}
+function createRandomNumber2(){
+var vy = 3*Math.random()-2;
+return vy;
+}
+var BulletMove1 = function(){
+createRandomNumber1();
+createRandomNumber2();
+x1 += vx1;
+y1 += vy1;
+Bullet1(x1,y1);
+if(x1>=600||x1<=0)
+vx1*=-1;
+if(y1>=600||y1<=0)
+vy1*=-1;
+}
+function whetherCollide(jx,jy){
+if(((jy-y)*(jy-y)+(jx-x)*(jx-x) <=324)||((jx+10-x)*(jx+10-x)+(jy+22-y)*(jy+22-y)<=144)||((jx-10-x)*(jx-10-x)+(jy+22-y)*(jy+22-y)<=144)){
+clearInterval(ultimate);
+gameLose();
+clearsetTimeout(ImGladItsDone);
+}
+}
+function BulletMove2(){
+createRandomNumber1();
+createRandomNumber2();
+x2 += vx2;
+y2 += vy2;
+Bullet2(x2,y2);
+if(x2>=600||x2<=0)
+vx2*=-1;
+if(y2>=600||y2<=0)
+vy2*=-1;
+}
+function BulletMove3(){
+createRandomNumber1();
+createRandomNumber2();
+x3 += vx3;
+y3 += vy3;
+Bullet3(x3,y3);
+if(x3>=600||x3<=0)
+vx3*=-1;
+if(y3>=600||y3<=0)
+vy3*=-1;
+}
+function BulletMove4(){
+createRandomNumber1();
+createRandomNumber2();
+x4 += vx4;
+y4 += vy4;
+Bullet4(x4,y4);
+if(x4>=600||x4<=0)
+vx4*=-1;
+if(y4>=600||y4<=0)
+vy4*=-1;
+}
+function BulletMove5(){
+createRandomNumber1();
+createRandomNumber2();
+x5 += vx5;
+y5 += vy5;
+Bullet5(x5,y5);
+if(x5>=600||x5<=0)
+vx5*=-1;
+if(y5>=600||y5<=0)
+vy5*=-1;
+}
+function BulletMove6(){
+createRandomNumber1();
+createRandomNumber2();
+x6 += vx6;
+y6 += vy6;
+Bullet6(x6,y6);
+if(x6>=600||x6<=0)
+vx6*=-1;
+if(y6>=600||y6<=0)
+vy6*=-1;
+}
+function BulletMove7(){
+createRandomNumber1();
+createRandomNumber2();
+x7 += vx7;
+y7 += vy7;
+Bullet7(x7,y7);
+if(x7>=600||x7<=0)
+vx7*=-1;
+if(y7>=600||y7<=0)
+vy7*=-1;
+}
+function BulletMove8(){
+createRandomNumber1();
+createRandomNumber2();
+x8 += vx8;
+y8 += vy8;
+Bullet8(x8,y8);
+if(x8>=600||x8<=0)
+vx8*=-1;
+if(y8>=600||y8<=0)
+vy8*=-1;
+}
+function BulletMove9(){
+createRandomNumber1();
+createRandomNumber2();
+x9 += vx9;
+y9 += vy9;
+Bullet9(x9,y9);
+if(x9>=600||x9<=0)
+vx9*=-1;
+if(y9>=600||y9<=0)
+vy9*=-1;
+}
+function BulletMove10(){
+createRandomNumber1();
+createRandomNumber2();
+x10 += vx10;
+y10 += vy10;
+Bullet10(x10,y10);
+if(x10>=600||x10<=0)
+vx10*=-1;
+if(y10>=600||y10<=0)
+vy10*=-1;
+}
+function BulletMove11(){
+createRandomNumber1();
+createRandomNumber2();
+x11 += vx11;
+y11 += vy11;
+Bullet11(x11,y11);
+if(x11>=600||x11<=0)
+vx11*=-1;
+if(y11>=600||y11<=0)
+vy11*=-1;
+}
+function BulletMove12(){
+createRandomNumber1();
+createRandomNumber2();
+x12 += vx12;
+y12 += vy12;
+Bullet12(x12,y12);
+if(x12>=600||x12<=0)
+vx12*=-1;
+if(y12>=600||y12<=0)
+vy12*=-1;
+}
+function BulletMove(){
+BulletMove1();
+BulletMove2();
+BulletMove3();
+BulletMove4();
+BulletMove5();
+BulletMove6();
+BulletMove7();
+BulletMove8();
+BulletMove9();
+BulletMove10();
+BulletMove11();
+BulletMove12();
+}
+var finalJudgement = function(){
+whetherCollide(x1,y1);
+whetherCollide(x2,y2);
+whetherCollide(x3,y3);
+whetherCollide(x4,y4);
+whetherCollide(x5,y5);
+whetherCollide(x6,y6);
+whetherCollide(x7,y7);
+whetherCollide(x8,y8);
+whetherCollide(x9,y9);
+whetherCollide(x10,y10);
+whetherCollide(x11,y11);
+whetherCollide(x12,y12);
+}
+var ultimate = setInterval(function(){
+ctx.clearRect(0,0,600,600);
+drawCat(x,y);
+BulletMove();
+strokeCanvas();
+finalJudgement();
+},10);
+var ImGladItsDone = setTimeout(function(){
+gameWin();
+},60000)
+</script>
+</body>
+
